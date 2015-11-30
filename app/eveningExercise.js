@@ -35,11 +35,10 @@ exports.eveningExerciseAnswers = {
     return str.split('').map(function(element){
       if(element.match(/\D/) != null){
         if(element === 'z'){
-          new_unicode = element.charCodeAt(0) - 25;
+          return String.fromCharCode(element.charCodeAt(0) - 25);
         }else {
-          new_unicode = element.charCodeAt(0) + 1;
+          return String.fromCharCode(element.charCodeAt(0) + 1);
         }
-        return String.fromCharCode(new_unicode);
       }else {
         return element;
       }
