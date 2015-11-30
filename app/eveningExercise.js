@@ -24,7 +24,12 @@ exports.eveningExerciseAnswers = {
   },
 
   reverseString : function(str) {
-    return str.split('').reverse().join('');
+    var array = str.split('');
+    var newArray = [];
+    for(i = array.length - 1; i >= 0; i--){
+      newArray.push(array[i])
+    }
+    return newArray.join('');
   },
 
   longestSubString : function(str) {
@@ -32,23 +37,21 @@ exports.eveningExerciseAnswers = {
   },
 
   letterMoveForward : function(str) {
-    return str.split('').map(function(element){
-      if(element.match(/\D/) != null){
-        if(element === 'z'){
-          return String.fromCharCode(element.charCodeAt(0) - 25);
-        }else {
-          return String.fromCharCode(element.charCodeAt(0) + 1);
-        }
+    return str.split('').map(function(letter) {
+      if(letter === 'z'|| letter === 'Z') {
+        return String.fromCharCode(letter.charCodeAt(0) - 25);
+      }else if(letter.match(/[a-yA-Y]/) != null) {
+        return String.fromCharCode(letter.charCodeAt(0) + 1);
       }else {
-        return element;
+        return letter;
       }
-      }).join('');
+    }).join('');
   },
 
   capitalizeWords : function(str) {
     return str
       .split(' ')
-      .map(function(string){ return string[0].toUpperCase() + string.slice(1)})
+      .map(function(string){ return string[0].toUpperCase() + string.slice(1) })
       .join(' ');
   }
 };
